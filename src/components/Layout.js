@@ -1,10 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import createComponent from '../../lib/createComponent'
 import layoutRules from './layout-rules'
 
 class Layout extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
+    styles: PropTypes.object,
+    rest: PropTypes.object,
     debug: PropTypes.bool,
 
     renderStartArea: PropTypes.func,
@@ -28,10 +32,10 @@ class Layout extends React.Component {
     endSize: PropTypes.string,
 
     /** How to align items on-axis within the layout (i.e. vertical or not). */
-    justifyItems: JustifyAlignType,
+    justifyItems: PropTypes.any,
 
     /** How to align cross-axis items within the layout (i.e. vertical or not). */
-    alignItems: JustifyAlignType,
+    alignItems: PropTypes.any,
 
     /** A layout can have gaps of whitespace between areas. */
     gap: PropTypes.string,
@@ -162,6 +166,6 @@ class Layout extends React.Component {
   }
 }
 
-export default createComponent(Component, {
+export default createComponent(Layout, {
   rules: layoutRules,
 })
